@@ -1,0 +1,211 @@
+*{
+	font-size:13px;
+}
+
+
+a
+{
+ 
+    color:blue;
+}
+          
+a:hover
+{
+    text-decoration:underline;    
+    font-weight:bold;
+}
+
+html,body{
+	margin:0;
+	padding:0;
+}
+body{
+    font-family:Arial,Helvetica,"Nimbus Sans L",sans-serif;
+	background:white;
+	text-align:center;
+}
+h3{
+	font-size:20px;
+	font-weight:bold;
+	margin:12px 0;
+}
+h4{
+	font-size:16px;
+	font-weight:bold;
+	color:#CC0000;
+	margin:10px 0;
+}
+h5{
+	font-size:14px;
+	font-weight:bold;
+	color:#990000;
+	margin:5px 0;
+}
+#header{
+	text-align:center;
+	background:#666;
+}
+#header-inner{
+	text-align:left;
+	margin:0 auto;
+	width:960px;
+	padding:10px 0;
+}
+#mainwrap{
+	text-align:center;
+	margin-top:5px;
+}
+.content{
+	text-align:left;
+	width:960px;
+	margin:0 auto;
+	padding:10px;
+	border-radius:5px;
+	border:1px solid #ddd;
+	background:#fff;
+    margin-bottom: 15px;
+}
+#content img{
+	margin-left:9px;
+}
+#footer{
+	text-align:center;
+	padding:10px;
+}
+#topmenu{
+	text-align:right;
+}
+#topmenu a{
+	display:inline-block;
+	padding:1px 3px;
+	text-decoration:none;
+	color:#fff;
+}
+#topmenu a:hover{
+	text-decoration:underline;
+}
+
+a.download-link{
+	color:#0000ff;
+}
+.dp-highlighter {
+    font-family: "Consolas","Courier New",Courier,mono;
+    font-size: 12px;
+    word-wrap: break-word;
+}
+.doc-table{
+	border-collapse:collapse;
+	border-spacing:0;
+	margin-left:9px;
+}
+.doc-table th,.doc-table td{
+	border:1px solid #8CACBB;
+	padding:0.3em 0.7em;
+}
+.doc-table th{
+	background:#eee;
+}
+
+.dp-highlighter ol li, .dp-highlighter .columns div {
+    line-height: 18px;
+}
+
+.dp-xml .attribute-value {
+    color: blue;
+}
+
+.dp-xml .attribute {
+    color: red;
+}
+
+.dp-highlighter ol li, .dp-highlighter .columns div {
+    background-color: #FFFFFF;
+    border-left: 1px solid #D1D7DC;
+    line-height: 18px;
+    margin: 0 0 0 38px;
+    padding-left: 10px;
+}
+
+.dp-xml .tag, .dp-xml .tag-name {
+    color: #006699;
+    font-weight: bold;
+}
+
+.dp-highlighter
+{
+  font-family: "Consolas", "Courier New", Courier, mono;
+  font-size: 12px;
+  background-color: transparent;
+  width: 97%;
+  overflow: auto;
+  margin-left: 9px;
+  padding: 1px; /* adds a little border on top when controls are hidden */
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+.dp-highlighter ol 
+{
+  border: 1px solid #D1D7DC;  
+  list-style: decimal; /* for ie */
+  background-color: #FAFAFA;
+  margin: 0px 0px 1px 0px; /* 1px bottom margin seems to fix occasional Firefox scrolling */
+  padding: 2px 0;
+  color: #2B91AF;
+}
+
+.dp-highlighter ol li,
+.dp-highlighter .columns div
+{
+  border-left: 1px solid #D1D7DC;
+  background-color: #fff;
+  padding-left: 10px;
+  line-height: 18px;
+  margin: 0 0 0 38px;
+}
+
+.dp-highlighter .columns 
+{
+  color: gray;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dp-highlighter .columns div 
+{
+  padding-bottom: 5px;
+}
+
+.dp-highlighter ol li span 
+{
+  color: Black;
+}
+
+/* Styles for the tools */
+
+.dp-highlighter .tools 
+{
+  padding: 3px;
+  text-align: left;
+  margin: 0;
+  color: black;
+/*  font-weight: bold;*/
+}
+
+/* About dialog styles */
+
+.dp-about { background-color: #fff; margin: 0px; padding: 0px; }
+.dp-about table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+.dp-about td { padding: 10px; vertical-align: top; }
+.dp-about .copy { border-bottom: 1px solid #ACA899; height: 95%; }
+.dp-about .title { color: red; font-weight: bold; }
+.dp-about .para { margin: 0 0 4px 0; }
+.dp-about .footer { background-color: #ECEADB; border-top: 1px solid #fff; text-align: right; }
+.dp-about .close { font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; background-color: #ECEADB; width: 60px; height: 22px; }
+
+/* Language specific styles */
+
+.dp-highlighter .comment, .dp-highlighter .comments { color: #008200; }
+.dp-highlighter .string { color: blue; }
+.dp-highlighter .keyword { color: #7f0055; font-weight: bold; }
+.dp-highlighter .preprocessor { color: gray; }

@@ -1,0 +1,67 @@
+﻿/******** 全局样式 ********/
+ 
+body 
+{
+    font-size: 12px; 
+    font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;
+}
+          
+li
+{
+    list-style-type: none;
+}
+          
+#nav a
+{
+    padding:5px;
+    text-decoration: none;
+    font-size:14px;
+    color:black;
+}
+          
+#nav a:hover
+{
+    text-decoration:underline;    
+    font-weight:bold;
+}
+          
+.content
+{
+	width: 747px;
+	*width: 727px;
+	_width: 727px;
+    margin:0 auto;
+}
+          
+.nav-srh
+{
+              
+}
+          
+.nav-srh input.style1{
+padding-right: 10px;
+float: right;
+         
+}
+
+.nav-srh .btn{
+background: url("../Images/search_gif.gif") no-repeat 0 0;
+padding-right: 10px;
+float: right;
+width: 53px;
+height: 21px;
+cursor: pointer;
+}
+/******************************
+table{
+table-layout:fixed;
+word-break:break-all;
+word-wrap:break-word;
+}
+td{
+word-break:keep-all; 不换行 
+white-space:nowrap; 不换行 
+overflow:hidden; 内容超出宽度时隐藏超出部分的内容 
+text-overflow:ellipsis; 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。
+}
+******************************/

@@ -1,0 +1,12 @@
+﻿{"total":10,"rows":[
+	{"DeptId":"0001","DeptName":"行政部"},
+	{"DeptId":"0002","DeptName":"财务部"},
+	{"DeptId":"0003","DeptName":"开发部"},
+	{"DeptId":"0004","DeptName":"研发部"},
+	{"DeptId":"0005","DeptName":"总裁办"},
+	{"DeptId":"0006","DeptName":"维修部"},
+	{"DeptId":"0007","DeptName":"营运部"},
+	{"DeptId":"0008","DeptName":"市场部"},
+	{"DeptId":"0009","DeptName":"人力资源部"},
+	{"DeptId":"00010","DeptName":"客户服务部"}
+]}

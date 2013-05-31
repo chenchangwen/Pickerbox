@@ -1,0 +1,808 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>PickerBox帮助</title>
+    <link href="css/help.css" rel="stylesheet" type="text/css" />
+    <link href="css/SyntaxHighlighter.css" rel="stylesheet" type="text/css" />
+    <link href="script/jquery-easyui-1.3.2/themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="script/jquery-easyui-1.3.2/themes/default/easyui.css" rel="stylesheet"
+        type="text/css" />
+    <script src="script/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="script/jquery-easyui-1.3.2/jquery.easyui.min.js" type="text/javascript"></script>
+    <link href="script/colorbox/example1/colorbox.css" rel="stylesheet" type="text/css" />
+    <script src="script/colorbox/colorbox/jquery.colorbox-min.js" type="text/javascript"></script>
+    <script src="script/pickerbox-2.0.js" type="text/javascript"></script>
+    <meta name="description" content="pickerbox简称采摘盒子,基于Jquery的插件,引用了JQueryzTree-v3.5.12,easyui1.3.2,及ColorBox v1.3.20.1.只为更方便的取得简单的,多条件的数据." />
+    <meta name="keywords" content="pickerbox 采摘盒子,jquery采摘盒子,jquery插件   " />
+</head>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#option").pickerbox(
+                {
+                    ismultiple: true,
+                    height: 200,
+                    width: 400,
+                    pickergird: {
+                        fieldtext: "RoleName",
+                        fieldvalue: "RoleId"
+                    },
+                    title: '选择角色 地址:template1.html',
+                    text: '行政部管理员,财务部管理员,开发部管理员',
+                    value: '1001,1002,1003',
+                    onselected: function(p) {
+                        alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text);
+                    }
+                }
+            );
+
+
+            $("#option2").pickerbox({
+                    ismultiple: false,
+                    pickergird: {
+                        fieldtext: "RoleName",
+                        fieldvalue: "RoleId"
+                    }
+                }
+            );
+
+            $("#option3").pickerbox(
+                {
+                    ismultiple: true,
+                    height: 200,
+                    width: 400,
+                    pickergird: {
+                        fieldtext: "DeptName",
+                        fieldvalue: "DeptId"
+                    },
+                    url: 'template2.html',
+                    title: '选择部门 地址:template2.html',
+                    text: '行政部',
+                    value: '0001',
+                    onselected: function(p) {
+                        alert("[#option3]已选值为:" + p.value + " 已选文本为:" + p.text);
+                    }
+                }
+            );
+
+            $("#option4").pickerbox(
+                {
+                    ismultiple: false,
+                    title: '显示树',
+                    height: 100,
+                    width: 500,
+                    url: 'template3.html',
+                    pickergird: {
+                        fieldtext: "DeptName",
+                        fieldvalue: "DeptId"
+                    }
+                });
+        });
+    
+        function gopickerboxargument() {
+            var p = $("#pickerboxargument").position();
+            window.scrollTo(p.left, p.top);
+        }
+    
+        function gopickerargument() {
+            var p = $("#pickerargument").position();
+            window.scrollTo(p.left, p.top);
+        }
+ 
+    
+    </script>
+<body>
+    <br />
+    <div class="content" style="border-color: #ADADAD">
+        <div style="padding: 10px">
+            
+            <div class="dp-highlighter">
+                <h3>pickerbox 2.0</h3>
+                <h4>关于pickerbox</h4>
+                <h1>pickerbox简称采摘盒子,基于Jquery的插件,引用了JQueryzTree-v3.5.12,easyui1.3.2,及ColorBox v1.3.20.1.只为更方便的取得简单的或多条件的数据.</h1>
+                <p>-支持树,表格呈现数据.</p>
+                <p>-支持跨iframe获取数据.</p>
+                <p>-灵活支持记录数据.</p>
+                <p>-支持重要事件回调.</p>
+                <p>-兼容IE8以上浏览器.</p>
+
+                
+                <h4>更新</h4>
+                <h5>版本 2.0 (2013-05-26)</h5>
+                <p>1.优化 整理几乎所有js代码.</p>
+                <p>2.增加 支持在一个普通页面调用,并且这个页面包括有iframe里面已经调用.</p>
+                <p>3.增加 树对象,可设定是否隐藏.</p>
+                <p>4.修正 定义多个事件产生错误.</p>
+                <p>5.修正 如果是input元素时候无法返回正确的文本.</p>
+                <p>6.修正 界面一致性,使更整齐.</p>
+                <p>7.更换 窗口插件为ColorBox v1.3.20.1,easyui1.2.6更换为1.3.2,ztree3.2更换为3.5.12.</p>
+                <p>8.移除 导航条对象.</p>
+                    
+            </div>
+            
+        </div>
+    </div>
+
+
+    <div class="content" style="border-color: #ADADAD">
+        <div style="padding: 10px">
+            <h3>必要引用</h3>
+            <p>1.(v1.5.2)jquery</p>
+            <p>2.(v1.3.2)jquery-easyui/jquery.easyui.min.js</p>
+            <p>3.(v1.3.2)jquery-easyui/themes/icon.css</p>
+            <p>4.(v1.3.2)jquery-easyui/themes/default/easyui.css</p>
+            <p>5.(v1.3.20.1)jquery.colorbox.js</p>
+            <p>6.(v1.3.20.1)jquery.colorbox/example1/colorbox.css</p>
+            <p>主要是easyui.js,和colorbox.js.同样的记得引入样式文件 :)</p>
+            <p>script文件夹已包括所有相关js.</p>
+        </div>
+    </div>
+
+    <div class="content" style="border-color: #ADADAD">
+        <div style="padding: 10px">
+            <h3>开始</h3>
+            <h4>select元素</h4>
+            <p>即select元素作为pickerbox.</p>
+            
+            <div class="dp-highlighter">
+                <ol start="1" class="dp-xml">
+                    <li class="alt">
+                        <span>
+                            <span class="tag">&lt;</span><span class="tag-name">select
+                                                         </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">/select</span><span class="tag">&gt;</span>
+                        </span>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="dp-highlighter">
+                    <div class="bar">
+                        <div class="tools"></div>
+                    </div>
+
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">script
+                                                             </span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt"><span><span>&nbsp;$(</span><span class="string">'#option&#39;</span>).pickerbox({&nbsp;&nbsp;</span></li>
+                        <li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="string">'选择角色 地址:template1.html'</span>;,&nbsp;&nbsp;</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ismultiple:</span><span class="keyword">true</span><span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;height:200,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;width:400,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;text:<span class="string">'行政部管理员,财务部管理员,开发部管理员'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;value:<span class="string">'1001,1002,1003'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;pickergird:{   </span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
+
+
+                        <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;onselected:<span class="keyword">function (p)</span><span>{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text); {</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+
+                        <li class="">
+                            <span>&nbsp;});</span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">/script</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+            <br/>
+            <div class="dp-highlighter">
+                <select id="option"></select>
+            </div>
+            
+            <h4>input元素</h4>
+            <p>即input元素作为pickerbox.</p>
+                <div class="dp-highlighter">
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">input
+                                                             </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option2"</span><span class="tag">/&gt;</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="dp-highlighter">
+                    <div class="bar">
+                        <div class="tools"></div>
+                    </div>
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">script
+                                                             </span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt"><span><span>&nbsp;$(</span><span class="string">'#option2&#39;</span>).pickerbox({&nbsp;&nbsp;</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ismultiple:</span><span class="keyword">false</span><span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;pickergird:{   </span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+                        <li class="">
+                            <span>&nbsp;});</span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">/script</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+                <br />
+                <div class="dp-highlighter">
+                    <input id="option2" />点击input元素.
+                </div>
+                <br />
+                        <h1>pickerbox()方法会创建必需的html元素.如果一个对象带参数,否则会使用默认的参数,请查看<a href="javascript:void(0)" onclick="gopickerboxargument();">pickerbox对象参数</a>.</h1>
+            <h1>注意:数据均是本地json测试数据,如果浏览器因安全问题无法读取,请用url后台数据返回.</h1>
+               
+
+            <br/>
+                <h3>模板页面</h3>
+                <p>在某些情况下,不一定所需要的数据都是统一的.比如A页面需要的是部门数据,B页面需要的是角色数据等.</p>
+                <p>那么我们就新建一个页面(比如templateX.html,这儿是template2.html),调用pickerbox的页面指定url参数即可,当然该templateX.html页面您需要重新参数.</p>
+                <div class="dp-highlighter">
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">script
+                                                             </span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt"><span><span>&nbsp;$(</span><span class="string">'#option3&#39;</span>).pickerbox({&nbsp;&nbsp;</span></li>
+                        <li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="string">'选择部门 地址:template2.html'</span>,&nbsp;&nbsp;</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ismultiple:</span><span class="keyword">false</span><span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;height:200,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;width:400,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;text:<span class="string">'行政部'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;value:<span class="string">'0001'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;pickergird:{   </span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'DeptName'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'DeptId'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;url:<span class="string">'template2.html'</span>,</span></li>
+                        <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;onselected:<span class="keyword">function (p)</span><span>{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text); {</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+
+                        <li class="">
+                            <span>&nbsp;});</span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">/script</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+                <h1>demo.htm</h1>
+                <br/>
+
+                <div class="dp-highlighter">
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">script
+                                                             </span><span class="attribute">type</span><span>=</span><span class="attribute-value">"text/javascript"</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt"><span>&nbsp;$(<span class="string">document</span>).ready(</span><span class="keyword">function()</span> <span>{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var p ={</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;panel:{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datagrid:{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columns:[[</span></li>
+                        <li class="alt"><span class="str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'DeptId'</span>,title:<span class="string">'部门Id'</span>,checkbox:</span><span class="keyword">true</span><span>},</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{field:<span class="string">'DeptName'</span>,title:<span class="string">'部门名称'</span>}</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]],</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url: <span class="string">'datagrid_data2.json'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pagination:<span class="keyword">true</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="string">'我的数据列表'</span></span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tree:{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isVisible:</span><span class="keyword">false</span><span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="string">'我的目录'</span></span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;searchbutton:{</span></li>
+                        <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onclick:<span class="keyword">function()</span><span>{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert('点击了搜索按钮.');</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;picker.build(p)</span></li>
+                        <li class=""><span>&nbsp;});</span></li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">/script</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+                <h1>template2.html</h1>
+
+                <br/>
+            <div class="dp-highlighter">
+                <select id="option3"></select>
+            </div>
+            
+            <h3>树目录</h3>
+            <div class="dp-highlighter">
+                <select id="option4"></select>
+            </div>
+            <h1>template3.html</h1>
+            <h1>显示树将<a href="javascript:void(0)" onclick="gopickerargument()">picker对象参数</a>.tree.isVisible属性设为ture,它将会显示树目录并加载定义的树对象.当然这需要您去定义.在tree.js文件.详细:<a href="http://www.ztree.me/v3/main.php" target="_blank">Ztree官网</a></h1>
+        </div>
+    </div>
+ 
+        <div class="content" style="border-color: #ADADAD">
+        <div style="padding: 10px">
+            <h3>在iframe里使用</h3>
+            <div class="dp-highlighter">
+                <ol start="1" class="dp-xml">
+                    <li class="alt">
+                        <span>
+                            <span class="tag">&lt;</span><span class="tag-name">iframe</span>
+                            <span class="attribute">src</span><span>=</span><span class="attribute-value">"pickerbox.htm"</span>
+                            <span class="attribute">width</span><span>=</span><span class="tag-name">"500"</span>
+                            <span class="attribute">height</span><span>=</span><span class="tag-name">"210"</span><span class="tag">&gt;&lt;/iframe></span>
+                        </span>
+                    </li>
+                </ol>
+
+                <h1>demo.html</h1>
+            </div>
+
+    
+            <div class="dp-highlighter">
+                    <ol start="1" class="dp-xml">
+                        <li class="alt">
+                            <span class="tag">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></span>
+                        </li>
+                        <li class="alt">
+                            <span class="tag">&lt;head></span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">link</span>
+                                <span class="attribute">href</span><span>=</span><span class="attribute-value">"script/jquery-easyui-1.3.2/themes/icon.css"</span>
+                                <span class="attribute">rel</span><span>=</span><span class="tag-name">"stylesheet"</span>
+                                <span class="attribute">type</span><span>=</span><span class="tag-name">"text/css"</span><span class="tag">/&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">link</span>
+                                <span class="attribute">href</span><span>=</span><span class="attribute-value">"script/jquery-easyui-1.3.2/themes/default/easyui.css"</span>
+                                <span class="attribute">rel</span><span>=</span><span class="tag-name">"stylesheet"</span>
+                                <span class="attribute">type</span><span>=</span><span class="tag-name">"text/css"</span><span class="tag">/&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">link</span>
+                                <span class="attribute">src</span><span>=</span><span class="attribute-value">"script/jquery-1.5.2.min.js</span>
+                                <span class="attribute">type</span><span>=</span><span class="tag-name">"text/javascript"</span>
+                                <span class="tag">&gt;/script></span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">link</span>
+                                <span class="attribute">src</span><span>=</span><span class="attribute-value">"script/pickerbox-1.5.js</span>
+                                <span class="attribute">type</span><span>=</span><span class="tag-name">"text/javascript"</span>
+                                <span class="tag">&gt;/script></span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">link</span>
+                                <span class="attribute">src</span><span>=</span><span class="attribute-value">"script/jquery-easyui-1.3.2/jquery.easyui.min.js</span>
+                                <span class="attribute">type</span><span>=</span><span class="tag-name">"text/javascript"</span>
+                                <span class="tag">&gt;/script></span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">title>iframepickerbox&lt;/title></span>
+                                
+                            </span>
+                        </li>
+               
+                        <li class="alt"><span><span>&nbsp;$(</span><span class="string">'#iframepickerbox&#39;</span>).pickerbox({&nbsp;&nbsp;</span></li>
+                        <li class=""><span>&nbsp;&nbsp;&nbsp;&nbsp;title:<span class="string">'在iframe使用'</span>,&nbsp;&nbsp;</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;ismultiple:</span><span class="keyword">false</span><span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;height:100,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;width:300,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;text:<span class="string">''</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;value:<span class="string">''</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;pickergird:{   </span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;parentid:<span class="string">'iniframe'</span>,</span></li>
+                 
+                        <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;onselected:<span class="keyword">function (p)</span><span>{</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("[#iframepickerbox]已选值为:" + p.value + " 已选文本为:" + p.text+" 元素Id:" + p.id); {</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
+
+                        <li class="">
+                            <span>&nbsp;});</span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">/script</span><span class="tag">&gt;</span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span class="tag">&lt;/head></span>
+                        </li>
+                        <li class="alt">
+                            <span class="tag">&lt;body></span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">select</span>
+                                <span class="attribute">id</span><span>=</span><span class="attribute-value">"iframepickerbox"</span><span class="tag">&gt;/select></span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span>
+                                <span class="tag">&lt;</span><span class="tag-name">span</span>
+                                <span class="attribute">style</span><span>=</span><span class="attribute-value">"font-size: 13px"</span><span class="tag">&gt;iframe里面&lt;/span></span>
+                            </span>
+                        </li>
+                        <li class="alt">
+                            <span class="tag">&lt;/body></span>
+                        </li>
+                        <li class="alt">
+                        <span class="tag">&lt;/html></span>
+                    </li>
+                    </ol>
+            <h1>pickerbox.htm</h1>
+            <iframe src="pickerbox.htm" id="iniframe" width="500" height="200" style="border:1px solid blue; margin-left: 10px;"></iframe>
+                <h1>特别注意:</h1>   
+                <h1>1.demo.htm已经调用了pickerbox(),同时iframe引用了pickerbox.htm.pickerbox.htm也调用了pickerbox().这种情况必须指定pickerbox参数的iframeid,如该例子iframeid:'iniframe'.否则将会匹配值出错.</h1>
+                <h1>2.点击<img src="icons/edit_add.png"/>图标时会弹出数据窗口,数据窗口是ColorBox v1.3.20.1. 当前页面是demo.htm,即调用pickerbox的页面引入ColorBox v1.3.20.1即可,否则弹出的数据窗口会在最后引入的页面调用.</h1>
+            
+<!--        <h3>在iframe里的iframe使用.</h3>-->
+<!--            <iframe src="pickerboxiframe.htm" id="inneriframe" width="850" height="850" style="border:1px solid blue; margin-left: 10px;"></iframe>-->
+            </div>
+           
+        </div>
+
+    </div>
+
+    <div class="content" style="border-color: #ADADAD" id="pickerboxargument">
+        <div style="padding: 10px">
+            <h3>属于调用页面</h3>
+            <h3>pickerbox对象参数</h3>
+            <h4>属性</h4>
+            <table class="doc-table">
+
+                <tbody>
+                    <tr>
+
+                        <th><strong>名称</strong></th>
+                        <th><strong>类型</strong></th>
+                        <th><strong>描述</strong></th>
+                        <th><strong>默认值</strong></th>
+
+                    </tr>
+                    <tr>
+                        <td>title（标题）</td>
+                        <td>string</td>
+                        <td>显示在pickerbox顶部的标题文本.</td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+
+                        <td>height（高度）</td>
+                        <td>number</td>
+                        <td>pickerbox的高度</td>
+                        <td>100%</td>
+
+                    </tr>
+                    <tr>
+                        <td>width（宽度）</td>
+                        <td>number</td>
+                        <td>pickerbox的宽度</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>text（文本）</td>
+                        <td>string</td>
+                        <td>pickerbox的已选文本</td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+                        <td>value（值）</td>
+                        <td>string</td>
+                        <td>pickerbox的已选值</td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+                        <td>parentid（父窗口id）</td>
+                        <td>string</td>
+                        <td>如果父窗口是iframe,必须设定</td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+                        <td>ismultiple（多选）</td>
+                        <td>boolean</td>
+                        <td>弹出数据窗口时的数据是否可以多选</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>url（地址）</td>
+                        <td>string</td>
+                        <td>弹出数据窗口的地址</td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+                        <td>pickergird</td>
+                        <td>object</td>
+                        <td>
+                            <p>在数据窗口点击每条记录时,会根据fieldvalue作为值,fieldtext作为文本.</p>
+                             
+                            <p>如有json {"RoleId":"1001","RoleName":"角色1","RoleId2":"10012","RoleName2":"角色2"}</p>
+                             
+                            <p>pickergird:{
+                                fieldtext:'RoleName',
+                                fieldvalue:'RoleId'
+                                }</p> 
+                            
+                            <p>那么点击时,将保存文本:"角色1",值:"1001".</p>
+                            
+                        </td>
+                        <td>空字符串</td>
+                    </tr>
+                    <tr>
+                        <td>onselected</td>
+                        <td>function(param)</td>
+                        <td>
+                            <p>当在数据窗口点击确认时,会在该函数返回一个'param'对象.</p>
+                            <p>'param'参数包含以下属性：</p>
+                            <p>id:字符串,当前对象的id.</p>
+                            <p>value:字符串,当前对象已选的值.</p>
+                            <p>text:字符串,当前对象已选的文本.</p>
+                            
+                        </td>
+                        <td>空字符串</td>
+                    </tr>
+                </tbody>
+            </table>
+     
+            <h4>方法</h4>
+            <table class="doc-table">
+                <tbody>
+                    <tr>
+                        <th><strong>名称</strong></th>
+                        <th><strong>参数</strong></th>
+                        <th><strong>描述</strong></th>
+                    </tr>
+
+                    <tr>
+                        <td>$.pickerbox.getCountById </td>
+                        <td>string(pickerbox的id)</td>
+                        <td>返回已选数量.</td>
+                    </tr>
+
+                    <tr>
+                        <td>$.pickerbox.getTextById</td>
+                        <td>string(pickerbox的id)</td>
+                        <td>返回已选文本.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>$.pickerbox.getValueById</td>
+                        <td>string(pickerbox的id)</td>
+                        <td>返回已选值.</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>$.pickerbox.getValueById</td>
+                        <td>string(pickerbox的id)</td>
+                        <td>返回已选值.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="content" style="border-color: #ADADAD" id="pickerargument">
+        <div style="padding: 10px">
+            <h3>属于模板页面</h3>
+            <h3>picker对象参数</h3>
+            <h4>属性(panel)</h4>
+            <table class="doc-table">
+                <tbody>
+                    <tr>
+
+                        <th><strong>名称</strong> </th>
+                        <th><strong>类型</strong></th>
+                        <th><strong>描述</strong></th>
+                        <th><strong>默认值</strong></th>
+
+                    </tr>
+                    <tr>
+                        <td>tree(树目录)</td>
+                        <td>object</td>
+                        <td>
+                            <p>object包含以下属性：</p>
+                            <p>isVisible:布尔值,设置为true将显示树目录.</p>
+                            <p>title:字符串,显示在树目录顶部的标题文本.</p>
+                        </td>
+                        <td>isVisible: false<br/>
+                            title:'目录'
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>searchbutton(查询按钮)</td>
+                        <td>object</td>
+                        <td>
+                            <p>object包含以下属性：</p>
+                            onclick: 函数, 点击查询按钮图标时触发.
+                        </td>
+                        <td>null</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h4>属性(panel.datagrid)</h4>
+            <table class="doc-table">
+                <tbody>
+                    <tr>
+
+                        <th><strong>名称</strong> </th>
+                        <th><strong>类型</strong></th>
+                        <th><strong>描述</strong></th>
+                        <th><strong>默认值</strong></th>
+
+                    </tr>
+                    <tr>
+                        <td>columns（列）</td>
+                        <td>object</td>
+                        <td>
+                            <p>object包含以下属性：</p>
+                            <p>field:字符串,列字段.</p>
+                            <p>title:字符串,列标题.</p>
+                            <p>checkbox:布尔值,设置为true将显示复选框.</p>
+                        </td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>title（标题）</td>
+                        <td>string</td>
+                        <td>显示在picker.datagrid顶部的标题文本.</td>
+                        <td>数据列表</td>
+                    </tr>
+                    <tr>
+                        <td>pagination（分页）</td>
+                        <td>boolean</td>
+                        <td>设置true将在数据表格底部显示分页工具栏.</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td>url（超链接）</td>
+                        <td>string</td>
+                        <td><p>一个用以从远程站点请求数据的超链接地址.</p>
+                            <p>可参考datagrid_data1.json和datagrid_data2.json</p>
+                            <p>如:{"total":10,"rows":[{"DeptId":"0001","DeptName":"行政部"}]}</p>
+                            <p>total:总记录数.</p>
+                            <p>rows:每行数据对应的json对象.</p>
+                        </td>
+                        <td>空字符串</td>
+                    </tr>           
+                </tbody>
+            </table>
+
+            <h4>分页参数</h4>
+            <table class="doc-table">
+                <tbody>
+                    <tr>
+                        <th><strong>名称</strong></th>
+                        <th><strong>描述</strong></th>
+                    </tr>
+                    <tr>
+                        <td>page</td>
+                        <td>第几页</td>
+                    </tr>
+                    <tr>
+                        <td>rows</td>
+                        <td>行数</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1>分页的数量超过当页设定的数量时,分页按钮即启用.当点[下一页](等翻页按钮)时.会发送参数到后台(地址是当前加载的url).</h1>
+            <h1>那么数据表格请求地址如:http://localhost/pickerbox/handler.aspx?page=1&row=10</h1>
+            <h1>所以,后台应根据这参数做出相应处理.即返回正确的JSON数据.</h1>
+
+            <h3>picker对象</h3>
+            <h4>方法</h4>
+            <table class="doc-table">
+                <tbody>
+                    <tr>
+                        <th><strong>名称</strong></th>
+                        <th><strong>参数</strong></th>
+                        <th><strong>描述</strong></th>
+                    </tr>
+                    <tr>
+                        <td>build</td>
+                        <td>object</td>
+                        <td>根据picker对象参数,创建数据窗口内容.</td>
+
+                    </tr>
+                    <tr>
+                        <td>reload</td>
+                        <td>where</td>
+                        <td>
+                            <p>where 应该是一个正确的json字符串.</p>
+                            <p>数据表格会根据当前url并附加上where重新加载请求.</p>
+                            <p>如:</p>
+                            <p> var where = { 'DeptName': '行政部' };</p>
+                            <p> var result = baidu.json.stringify(where);</p>
+                            <p> picker.datagrid.reload(result);</p>
+                            <p>这里使用了baidu.json.stringify进行json格式化.</p>
+                            <p>那么数据表格请求地址将是如:</p>
+                            <p>http://localhost/pickerbox/handler.aspx?where=%7B%22DeptName%22%3A%22%E8%A1%8C%E6%94%BF%E9%83%A8%22%7D&page=1&rows=10</p>
+                            <p>会对请求内容进行编码.</p>
+                            <p>那么后台就可以获取参数where.</p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+   
+
+
+    <div class="content" style="border-color: #ADADAD" id="ztreeusage">
+        <div style="padding: 10px">
+
+            <h3>树(Ztree)控件的使用方法.</h3>
+
+            <div class="dp-highlighter">
+                具体请参考Ztree官网.
+            </div>
+
+            <div class="dp-highlighter">
+                <a href="http://www.ztree.me/v3/main.php" target="_blank">去看看</a>
+            </div>
+            <!--                 <iframe src="pickerbox2.htm" width="500" id="myiframe" height="200px"frameborder="no" style="border: 1px solid #0066CC; border-radius: 5px 5px 5px 5px;overflow:hidden;"scrolling="no"></iframe>-->
+        </div>
+    </div>
+ 
+    <div class="content" style="border-color: #ADADAD">
+        <div style="padding: 10px">
+            <h4>更新</h4>
+            <h5>版本 2.0 (2013-05-26)</h5>
+            <p>1.优化 整理几乎所有js代码.</p>
+            <p>2.增加 支持在一个普通页面调用,并且这个页面包括有iframe里面已经调用.</p>
+            <p>3.增加 树对象,可设定是否隐藏.</p>
+            <p>4.修正 定义多个事件产生错误.</p>
+            <p>5.修正 如果是input元素时候无法返回正确的文本.</p>
+            <p>6.修正 界面一致性,使更整齐.</p>
+            <p>7.窗口 插件更换为ColorBox v1.3.20.1,easyui1.2.6更换为1.3.2,ztree3.2更换为3.5.12.</p>
+            <p>8.移除 导航条对象.</p>
+            <h5>版本 1.0 (2012-07-18)</h5>
+            <p>最初发布.</p>
+            <br />
+        </div>
+    </div>
+
+</body>
+</html>
+

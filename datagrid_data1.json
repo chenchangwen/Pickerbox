@@ -1,0 +1,13 @@
+﻿{"total":10,"rows":[
+	{"RoleId":"1001","RoleName":"行政部管理员","RoleNo":"9527"},
+	{"RoleId":"1002","RoleName":"财务部管理员","RoleNo":"9528"},
+	{"RoleId":"1003","RoleName":"开发部管理员","RoleNo":"9529"},
+	{"RoleId":"1004","RoleName":"研发部管理员","RoleNo":"9530"},
+	{"RoleId":"1005","RoleName":"总裁办管理员","RoleNo":"9531"},
+	{"RoleId":"1006","RoleName":"维修部管理员","RoleNo":"9532"},
+	{"RoleId":"1007","RoleName":"营运部管理员","RoleNo":"9533"},
+	{"RoleId":"1008","RoleName":"市场部管理员","RoleNo":"9534"},
+	{"RoleId":"1009","RoleName":"人力资源部管理员","RoleNo":"9535"},
+	{"RoleId":"1010","RoleName":"客户服务部管理员","RoleNo":"9536"}
+]}
+ 
