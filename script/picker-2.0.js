@@ -1,5 +1,5 @@
 ﻿/*
-    jQuery Pickerbox v2.0 - 2013-05-30
+    jQuery Pickerbox v2.0 - 2013-06-01
     (c) Kevin 21108589@qq.com
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -20,11 +20,6 @@ var defaults = {
         }
     },
     ismultiple: $.query.get('ismultiple') == 'true' ? true : false
-    
-//    navbar: {
-//        columns: [],
-//        queryurl: '' //查询url
-//    },
 };
 
 var search = function (where) {
@@ -42,13 +37,23 @@ var picker = {
     },
     reload: function (where) {
         picker.element.panel.$grid.datagrid('reload', { where: where });
-    }
-    ,
+    }, 
 /**/
     $self: '',
     id: "pickerpanel",
     element: {
         $parent: '', $value: '', $text: '', $pickerbox: '',
+        style: {
+            //初始化一些样式
+            init: function () {
+                picker.element.panel.grid.height = '361';
+                picker.element.panel.tree.height = '321';
+                if (browser.isie6() || browser.isie7()) {
+                    picker.element.panel.grid.height = '380';
+                    picker.element.panel.tree.height = picker.element.panel.grid.height - 39;
+                }
+            }
+        },
         text: {
             id: 'pickertext'
         },
@@ -94,7 +99,7 @@ var picker = {
                 button: {
                     id: 'searchbtn'
                 },
-                onclick:'',
+                onclick:''
             },
             grid: {
                 id: 'pickergrid',
@@ -142,9 +147,8 @@ var picker = {
             tree: {
                 id: 'tree',
                 width: 250,
-                height: 300,
-                build: function() {
-                    var html = "<div style='width: auto; float: left; min-height: 1px; width: " + picker.element.panel.tree.width + "px;' ><ul id=" + picker.element.panel.tree.id + " class='ztree' style='background: white; margin-top: 0px; height:321px;width:" + (picker.element.panel.tree.width - 12) + "px'></ul></div>";
+                build: function () {
+                    var html = "<div style='width: auto; float: left; width: " + picker.element.panel.tree.width + "px;' ><ul id=" + picker.element.panel.tree.id + " class='ztree' style='background: white; margin-top: 0px; height:" + picker.element.panel.tree.height+ "px;width:" + (picker.element.panel.tree.width - 12) + "px'></ul></div>";
                     picker.$self.append(html);
                     var obj = $("#" + picker.element.panel.tree.id);
                     var t = defaults.panel.tree.title == '' ? '目录' : defaults.panel.tree.title;
@@ -171,7 +175,8 @@ var picker = {
                 }
             },
             //panel初始化
-            init: function() {
+            init: function () {
+                picker.element.style.init();
                 if (defaults.panel.tree.isVisible) {
                     picker.element.panel.tree.build();
                 }
@@ -183,8 +188,7 @@ var picker = {
             }
         },
         init: function (opts) {
-
-            var pickerpanel = '<div id="pickerpanel" style="margin: 0 auto; width: 1000px"></div>';
+            var pickerpanel = "<div id='"+picker.id+"' style='margin: 0 auto; width: 1000px'></div>";
             var pickerinput = "<input value='' id='pickervalue' type='hidden' /><input value='' id='pickertext' type='hidden' />";
             var pickerhtml = pickerpanel + pickerinput;
             $("body").html(pickerhtml);
@@ -200,7 +204,7 @@ var picker = {
  
             picker.grid.fieldtext = $.query.get('fieldtext');
             picker.grid.fieldvalue = $.query.get('fieldvalue');
-            
+
             picker.element.panel.init();
         }
     },
@@ -246,7 +250,7 @@ var picker = {
                 var text = '';
                 if ($.query.get('tagname') == "input" && val != '') {
                     var html = '';
-                    var pickertext = (parent.$("#" + picker.element.out.pickerbox.id).val()).toString().split(',');
+                    var pickertext = target.$("#" + picker.element.out.text.id).val().split(',');
                     picker.element.$value.val(picker.element.$value.val() + ",");
                     var pickervalue = picker.element.$value.val().split(",");
                     for (var i = 0; i < pickertext.length; i++) {
@@ -554,10 +558,11 @@ picker.grid = {
         if (!defaults.panel.tree.isVisible) {
             w = windowWidth;
         }
+        
         gridobj.datagrid({
             url: opts.datagrid.url,
             width: w,     
-            height: '361',
+            height: picker.element.panel.grid.height,
             toolbar: '#tb',
             singleSelect: defaults.ismultiple==true?false:true,
             pagination: opts.datagrid.pagination == undefined ? false : defaults.panel.datagrid.pagination,
@@ -600,6 +605,7 @@ picker.grid = {
                     bindRowsEvent();
                 }, 10);
                 picker.grid.showSelectedRow();
+               
             },
             onUnselect: function (rowIndex, rowData) {
                 picker.box.del(rowIndex, rowData);
@@ -626,6 +632,7 @@ picker.grid = {
                 picker.grid.showSelectedRow();
             }
         });
+       
     },
     checkbox: {
         //获取所有checkbox对象
@@ -718,4 +725,11 @@ picker.grid = {
     }
 };
 
- 
+var browser = {
+    isie6: function () {
+        return $.browser.msie && ($.browser.version == "6.0");
+    },
+    isie7: function () {
+        return $.browser.msie && ($.browser.version == "7.0");
+    }
+};

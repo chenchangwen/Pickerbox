@@ -1,5 +1,5 @@
 ﻿/*
-    jQuery Pickerbox v2.0 - 2013-05-30
+    jQuery Pickerbox v2.0 - 2013-06-01
     (c) Kevin 21108589@qq.com
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -15,9 +15,10 @@
      iframeid: '',                   //父窗口id
      url:'template1.html',
      pickergird: {                   //数据窗口的表格对象
-         fieldtext: "",         //对象的文本
-         fieldvalue: ""         //对象的值
-     }
+         fieldtext: "",              //对象的文本
+         fieldvalue: ""              //对象的值
+     },
+     showtype:"select"
  };
 
  var element = {
@@ -50,13 +51,12 @@
   
     //设置内容
     $.fn.pickerbox.setContent = function (p) {
-        var o = $.pickerbox.getObject(p.id);
-        if (o.attr("tagName").toUpperCase() == "INPUT")
+        var o = $.pickerbox.getObject(p.id + "_content");
+        if (o.length==0 || o.attr("tagName").toUpperCase() == "INPUT" ) {
             o.val(p.content);
-        else
+        } else
             o.html(p.content);
-        
-        $.pickerbox.getObject(p.id+"_count").text(p.count);
+        $.pickerbox.getObject(p.id + "_count").text(p.count);
         $.pickerbox.getObject(p.id + "_value").val(p.value);
     };
     
@@ -71,25 +71,26 @@
                     var p = opts;
                     var txt = p.text.split(",");
                     var val = p.value.split(",");
-                    var html = '';
+                    var html = "<select id='" + box.element.content.id + "' multiple='multiple' style='width:100%;border:0;height:100%'>";
                     var count = 0;
                     if (p.value != "") {
                         for (var i = 0; i < val.length; i++) {
                             html += "<option value='" + val[i] + "'>" + txt[i] + "</option>";
                             count++;
                         }
-                        box.$self.html(html);
-                        box.element.$count = $("#" + opts.id + '_count');
-                        box.element.$content = $("#" + opts.id + '_content');
-                        box.element.$count.text(count);
                     }
+                    html += "</select>";
+                    box.$self.html(html);
+                    box.element.$count = $("#" + opts.id + '_count');
+                    box.element.$content = $("#" + opts.id + '_content');
+                    box.element.$count.text(count);
                 }
             },
             $count: '',
             count: {
                 id: '',
                 set: function (id) {
-                    $("#" + id + "_count").text($("#" + id + ">option").length);
+                    $("#" + id + "_count").text($("#" + id + "_content>option").length);
                 }
             },
             $value: '',
@@ -123,9 +124,13 @@
                     for (var i = 0; i < txt.length; i++) {
                         str += txt[i] + ',';
                     }
+                    
+                    var html = "<input id ='" + box.element.content.id + "' readonly=readonly style='width:100%;' />";
+                    box.$self.html(html);
                     box.$self.val(str.substr(0, str.length - 1));
-                    box.$self.attr("readonly", "readonly");
-                    box.$self.click(function () {
+                    box.element.$input = $("#" + opts.id + '_content');
+                    
+                    box.element.$input.click(function () {
                         showWindow(opts);
                     });
                 }
@@ -137,7 +142,7 @@
                         var pid = $("#" + element.out.btn.id).attr("pickerboxid") == undefined ? top.$("#" + element.out.btn.id).attr("pickerboxid") : $("#" + element.out.btn.id).attr("pickerboxid");
                     
                         var val = $.pickerbox.getValueById(pid) == '' ? '空' : $.pickerbox.getValueById(pid);
-                        var txt = $.pickerbox.getTextById(pid) == '' ? '空' : $.pickerbox.getTextById(pid);
+                        var txt = $.pickerbox.getTextById(pid + "_content") == '' ? '空' : $.pickerbox.getTextById(pid + "_content");
                         var json = { id: pid, value: val, text: txt };
                         var obj = '';
                         if (top.box[pid] != undefined) {
@@ -171,36 +176,39 @@
         },
         init: function (opts, el,callback) {
             opts.id = box.createId(el);
-            
-            box.element.content.id = opts.id;
+            opts.showtype = opts.showtype == "" ? "select" : opts.showtype;
+            box.element.content.id = opts.id+ "_content";
             box.element.value.id = opts.id + '_value';
             box.element.count.id = opts.id + '_count';
             
             box.$self = $("#" + opts.id);
             box.$self.attr("iframeid", opts.iframeid);
+ 
             var self = box.$self;
             self.after("<input id='" + box.element.value.id + "' type='hidden'/>");
             box.element.$value = $("#" + opts.id + '_value');
-            if (el.attr("tagName") == "SELECT") {
-                self.css({ "width": "100%", "height": opts.height });
+            // box.element.$content.css({ "width": "100%", "height": opts.height });
+
+            if (opts.showtype == "select") {
                 self.panel({
                     width: opts.width,
                     height: opts.height,
                     title: opts.title + ' 已选:<span style="color:red" id=' + box.element.count.id + '>0</span>条记录',
                     tools: [{
-                        iconCls: 'icon-add',
-                        handler: function () {
-                            showWindow(opts);
-                        }
-                    }, {
-                        iconCls: 'icon-cut',
-                        handler: function () { del(opts); }
-                    }]
+                            iconCls: 'icon-add',
+                            handler: function() {
+                                showWindow(opts);
+                            }
+                        }, {
+                            iconCls: 'icon-cut',
+                            handler: function() { del(opts); }
+                        }]
                 });
-                box.$self.attr("multiple", "multiple");
                 box.element.content.build(opts);
-            } else {
+            }
+            else if (opts.showtype == "input") {
                 box.element.input.build(opts);
+                box.$self.css({ "width": opts.width});
             }
             box.element.button.build(opts,callback);
             box.element.value.set(opts.value);
@@ -253,9 +261,9 @@
     }
 
     function del(opts) {
-        var boxobj = $("#" + opts.id);
+        var boxobj = $("#" + opts.id+"_content");
         var newkey = {};
-        $("#" + opts.id +" > option:selected").each(function () {
+        $("#" + opts.id + "_content> option:selected").each(function () {
             var arrlist =$("#" + opts.id +"_value").val().split(",");
             var o = $(this);
             var index = o.index();
@@ -263,7 +271,7 @@
                 if (arrlist[i] == o.attr("value")) {
                     newkey.value = arrlist[i];
                     newkey.text = o.text();
-                    $("#" + opts.id +">option[value='" + o.attr("value") + "']").remove();
+                    $("#" + opts.id + "_content>option[value='" + o.attr("value") + "']").remove();
                     if (boxobj.children().length > index) {
                         boxobj.get(0).selectedIndex = index;
                     }
@@ -285,14 +293,18 @@
         url += (p.ismultiple == true ? "&ismultiple=true" : "&ismultiple=false");
         url += "&pickerbox=" + p.id;
         url += "&fieldtext=" + p.pickergird.fieldtext + "&fieldvalue=" + p.pickergird.fieldvalue;
-        if ($("#" + p.id).attr("tagName").toUpperCase() == "INPUT") {
+        if ($("#" + p.id+"_content").attr("tagName").toUpperCase() == "INPUT") {
             url += "&tagname=input";
         }
         var target = $("#colorbox").length > 0 ? window : top;
-        target.$.colorbox({ href: url, width: '1060px', height: '605px', iframe: true });
-
+        var h = '605px';
+        if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style || $.browser.msie && ($.browser.version == "7.0")) {
+            h = '625px';
+        }
+      
+        target.$.colorbox({ href: url, width: '1060px', height: h, iframe: true });
         top.$("#"+element.out.value.id).val($.pickerbox.getValueById(p.id));
-        top.$("#"+element.out.text.id).val($.pickerbox.getContentById(p.id));
+        top.$("#"+element.out.text.id).val($.pickerbox.getContentById(p.id+"_content"));
         top.$("#"+element.out.count.id).val($.pickerbox.getCountById(p.id));
     }
 })($);
@@ -365,7 +377,7 @@ $(document).ready(function () {
                 value: top.$("#"+element.out.value.id).val(),
                 content: top.$("#"+element.out.text.id).val()
             };
-            $("#" + pid).pickerbox.setContent(p);
+            $("#" + pid+"_content").pickerbox.setContent(p);
         });
         //写入中间传值使用的元素
         if (top.$("#" + element.out.warpdiv.id).length == 0) {

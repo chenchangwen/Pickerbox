@@ -33,7 +33,8 @@
                     value: '1001,1002,1003',
                     onselected: function(p) {
                         alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text);
-                    }
+                    },
+                    showtype: "select"
                 }
             );
 
@@ -43,7 +44,9 @@
                     pickergird: {
                         fieldtext: "RoleName",
                         fieldvalue: "RoleId"
-                    }
+                    },
+                    width:200,
+                    showtype:"input"
                 }
             );
 
@@ -84,42 +87,14 @@
             window.scrollTo(p.left, p.top);
         }
     
-        function gopickerargument() {
-            var p = $("#pickerargument").position();
-            window.scrollTo(p.left, p.top);
-        }
- 
-    
     </script>
 <body>
     <br />
     <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
-            
             <div class="dp-highlighter">
-                <h3>pickerbox 2.0</h3>
-                <h4>关于pickerbox</h4>
-                <h1>pickerbox简称采摘盒子,基于Jquery的插件,引用了JQueryzTree-v3.5.12,easyui1.3.2,及ColorBox v1.3.20.1.只为更方便的取得简单的或多条件的数据.</h1>
-                <p>-支持树,表格呈现数据.</p>
-                <p>-支持跨iframe获取数据.</p>
-                <p>-灵活支持记录数据.</p>
-                <p>-支持重要事件回调.</p>
-                <p>-兼容IE8以上浏览器.</p>
-
-                
-                <h4>更新</h4>
-                <h5>版本 2.0 (2013-05-26)</h5>
-                <p>1.优化 整理几乎所有js代码.</p>
-                <p>2.增加 支持在一个普通页面调用,并且这个页面包括有iframe里面已经调用.</p>
-                <p>3.增加 树对象,可设定是否隐藏.</p>
-                <p>4.修正 定义多个事件产生错误.</p>
-                <p>5.修正 如果是input元素时候无法返回正确的文本.</p>
-                <p>6.修正 界面一致性,使更整齐.</p>
-                <p>7.更换 窗口插件为ColorBox v1.3.20.1,easyui1.2.6更换为1.3.2,ztree3.2更换为3.5.12.</p>
-                <p>8.移除 导航条对象.</p>
-                    
+                <h5 style="font-size: 50px">pickerbox 2.0</h5>  
             </div>
-            
         </div>
     </div>
 
@@ -140,16 +115,14 @@
 
     <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
-            <h3>开始</h3>
-            <h4>select元素</h4>
-            <p>即select元素作为pickerbox.</p>
-            
+            <h3>例子</h3>
+            <h4>select 样式</h4>
             <div class="dp-highlighter">
                 <ol start="1" class="dp-xml">
                     <li class="alt">
                         <span>
-                            <span class="tag">&lt;</span><span class="tag-name">select
-                                                         </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">/select</span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;</span><span class="tag-name">div
+                                                         </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">/div</span><span class="tag">&gt;</span>
                         </span>
                     </li>
                 </ol>
@@ -178,7 +151,7 @@
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
-
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;showtype:</span><span class="string">'select'</span><span>,</span></li>
 
                         <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;onselected:<span class="keyword">function (p)</span><span>{</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text); {</span></li>
@@ -196,22 +169,21 @@
                 </div>
             <br/>
             <div class="dp-highlighter">
-                <select id="option"></select>
+                <div id="option"></div>
             </div>
-            
-            <h4>input元素</h4>
-            <p>即input元素作为pickerbox.</p>
-                <div class="dp-highlighter">
-                    <ol start="1" class="dp-xml">
-                        <li class="alt">
-                            <span>
-                                <span class="tag">&lt;</span><span class="tag-name">input
-                                                             </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option2"</span><span class="tag">/&gt;</span>
-                            </span>
-                        </li>
-                    </ol>
-                </div>
-
+            <br/>
+            <h4>input 样式</h4>
+            <div class="dp-highlighter">
+                 <ol start="1" class="dp-xml">
+                    <li class="alt">
+                        <span>
+                            <span class="tag">&lt;</span><span class="tag-name">div
+                                                         </span><span class="attribute">id</span><span>=</span><span class="attribute-value">"option2"</span><span class="tag">&gt;</span><span class="tag">&lt;</span><span class="tag-name">/div</span><span class="tag">&gt;</span>
+                        </span>
+                    </li>
+                </ol>
+            </div>
+           
                 <div class="dp-highlighter">
                     <div class="bar">
                         <div class="tools"></div>
@@ -228,6 +200,8 @@
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;pickergird:{   </span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;width:</span><span>200</span><span>,</span></li>
+                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;showtype:</span><span class="string">'input'</span><span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;}</span></li>
                         <li class="">
                             <span>&nbsp;});</span>
@@ -239,16 +213,17 @@
                         </li>
                     </ol>
                 </div>
-                <br />
+            <br />
+          
                 <div class="dp-highlighter">
-                    <input id="option2" />点击input元素.
+                    <div id="option2"></div>点击input元素.
                 </div>
                 <br />
                         <h1>pickerbox()方法会创建必需的html元素.如果一个对象带参数,否则会使用默认的参数,请查看<a href="javascript:void(0)" onclick="gopickerboxargument();">pickerbox对象参数</a>.</h1>
             <h1>注意:数据均是本地json测试数据,如果浏览器因安全问题无法读取,请用url后台数据返回.</h1>
                
 
-            <br/>
+               <br/>
                 <h3>模板页面</h3>
                 <p>在某些情况下,不一定所需要的数据都是统一的.比如A页面需要的是部门数据,B页面需要的是角色数据等.</p>
                 <p>那么我们就新建一个页面(比如templateX.html,这儿是template2.html),调用pickerbox的页面指定url参数即可,当然该templateX.html页面您需要重新参数.</p>
@@ -332,19 +307,20 @@
 
                 <br/>
             <div class="dp-highlighter">
-                <select id="option3"></select>
+                <div id="option3"></div>
             </div>
             
             <h3>树目录</h3>
             <div class="dp-highlighter">
-                <select id="option4"></select>
+                <div id="option4"></div>
             </div>
             <h1>template3.html</h1>
-            <h1>显示树将<a href="javascript:void(0)" onclick="gopickerargument()">picker对象参数</a>.tree.isVisible属性设为ture,它将会显示树目录并加载定义的树对象.当然这需要您去定义.在tree.js文件.详细:<a href="http://www.ztree.me/v3/main.php" target="_blank">Ztree官网</a></h1>
+            <br/>
+                            <h1>显示树将<a href="javascript:void(0)" onclick="gopickerargument()">picker对象参数</a>.tree.isVisible属性设为ture,它将会显示树目录并加载定义的树对象.当然这需要您去定义.在tree.js文件.详细使用方法:<a href="http://www.ztree.me/v3/main.php" target="_blank">Ztree官网</a></h1>
+                </div>
         </div>
-    </div>
- 
-        <div class="content" style="border-color: #ADADAD">
+     
+    <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
             <h3>在iframe里使用</h3>
             <div class="dp-highlighter">
@@ -451,8 +427,8 @@
                         </li>
                         <li class="alt">
                             <span>
-                                <span class="tag">&lt;</span><span class="tag-name">select</span>
-                                <span class="attribute">id</span><span>=</span><span class="attribute-value">"iframepickerbox"</span><span class="tag">&gt;/select></span>
+                                <span class="tag">&lt;</span><span class="tag-name">div</span>
+                                <span class="attribute">id</span><span>=</span><span class="attribute-value">"iframepickerbox"</span><span class="tag">&gt;/div></span>
                             </span>
                         </li>
                         <li class="alt">
@@ -481,7 +457,7 @@
         </div>
 
     </div>
-
+    
     <div class="content" style="border-color: #ADADAD" id="pickerboxargument">
         <div style="padding: 10px">
             <h3>属于调用页面</h3>
@@ -765,43 +741,37 @@
             </table>
         </div>
     </div>
-   
-
-
-    <div class="content" style="border-color: #ADADAD" id="ztreeusage">
-        <div style="padding: 10px">
-
-            <h3>树(Ztree)控件的使用方法.</h3>
-
-            <div class="dp-highlighter">
-                具体请参考Ztree官网.
-            </div>
-
-            <div class="dp-highlighter">
-                <a href="http://www.ztree.me/v3/main.php" target="_blank">去看看</a>
-            </div>
-            <!--                 <iframe src="pickerbox2.htm" width="500" id="myiframe" height="200px"frameborder="no" style="border: 1px solid #0066CC; border-radius: 5px 5px 5px 5px;overflow:hidden;"scrolling="no"></iframe>-->
-        </div>
-    </div>
  
-    <div class="content" style="border-color: #ADADAD">
+      <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
-            <h4>更新</h4>
-            <h5>版本 2.0 (2013-05-26)</h5>
-            <p>1.优化 整理几乎所有js代码.</p>
-            <p>2.增加 支持在一个普通页面调用,并且这个页面包括有iframe里面已经调用.</p>
-            <p>3.增加 树对象,可设定是否隐藏.</p>
-            <p>4.修正 定义多个事件产生错误.</p>
-            <p>5.修正 如果是input元素时候无法返回正确的文本.</p>
-            <p>6.修正 界面一致性,使更整齐.</p>
-            <p>7.窗口 插件更换为ColorBox v1.3.20.1,easyui1.2.6更换为1.3.2,ztree3.2更换为3.5.12.</p>
-            <p>8.移除 导航条对象.</p>
-            <h5>版本 1.0 (2012-07-18)</h5>
-            <p>最初发布.</p>
-            <br />
+            <div class="dp-highlighter">
+                <h3>关于pickerbox</h3>
+                <h1>pickerbox简称采摘盒子,基于Jquery的插件,引用了JQueryzTree-v3.5.12,easyui1.3.2,及ColorBox v1.3.20.1.只为更方便的取得简单的或多条件的数据.</h1>
+                <p>-支持树,表格呈现数据.</p>
+                <p>-支持跨iframe获取数据.</p>
+                <p>-灵活支持记录数据.</p>
+                <p>-支持重要事件回调.</p>
+                <br/>
+                <h4>兼容浏览器</h4>
+                <p>成功测试在以下浏览器</p>
+                <p>IE6,7,8</p>
+                <br/>
+                <h4>更新</h4>
+                <h5>版本 2.0 (2013-05-26)</h5>
+                <p>1.优化 整理几乎所有js代码.</p>
+                <p>2.增加 支持在一个普通页面调用,并且这个页面包括有iframe里面已经调用.</p>
+                <p>3.增加 树对象,可设定是否隐藏.</p>
+                <p>3.增加 支持IE6,7</p>
+                <p>4.修正 定义多个事件产生错误.</p>
+                <p>5.修正 如果是input元素时候无法返回正确的文本.</p>
+                <p>6.修正 界面一致性,使更整齐.</p>
+                <p>7.更换 窗口插件为ColorBox v1.3.20.1,easyui1.2.6更换为1.3.2,ztree3.2更换为3.5.12.</p>
+                <p>8.移除 导航条对象.</p>   
+                <h5>版本 1.0 (2012-07-18)</h5>
+                <p>最初发布.</p>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
 
