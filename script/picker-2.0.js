@@ -1,5 +1,5 @@
 ﻿/*
-    jQuery Pickerbox v2.0 - 2013-06-01
+    jQuery Pickerbox v2.0 - 2013-06-03
     (c) Kevin 21108589@qq.com
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -46,8 +46,8 @@ var picker = {
         style: {
             //初始化一些样式
             init: function () {
-                picker.element.panel.grid.height = '361';
-                picker.element.panel.tree.height = '321';
+                picker.element.panel.grid.height = '363';
+                picker.element.panel.tree.height = '323';
                 if (browser.isie6() || browser.isie7()) {
                     picker.element.panel.grid.height = '382';
                     picker.element.panel.tree.height = picker.element.panel.grid.height - 40;
@@ -148,6 +148,19 @@ var picker = {
                     } else {
                         picker.element.panel.$content.append("<option value='" + value + "'>" + text + "</option>");
                     }
+                },
+                del: function (value) {
+                    if (browser.isie6()) {
+                        var sel = document.getElementById('content');
+                        $("#" + picker.element.panel.content.id + " > option").each(function(i) {
+                            var o = $(this);
+                            if (value == $(this).val()) {
+                                sel.remove(o.index());
+                            }
+                        });
+                    } else {
+                        $("#" + picker.element.panel.content.id + " option[value='" + value + "']").remove();
+                    }
                 }
             },
             button: {
@@ -244,7 +257,6 @@ var picker = {
     },
     //创建
     build: function (options) {
- 
         picker.element.init(options);
         if ($.query.get('pickerbox') != "") {
             var outvalueid = picker.element.out.value.id;
@@ -256,7 +268,6 @@ var picker = {
                 if (parent.$("#" + outvalueid).val() == undefined)
                     target = top;
                 var val = target.$("#" + outvalueid).val();
-                //picker.element.$value.val(val);
                 picker.element.value.set(val);
  
                 var text = '';
@@ -324,11 +335,6 @@ var picker = {
         var id = picker.element.out.pickerbox.id;
         if (id != "" && id != null)
             setValueToPickerBox(top);
-//            if (picker.element.out.parent.id == true) {
-//                setValueToPickerBox(top);
-//            } else {
-//                setValueToPickerBox(picker.element.out.parent.id);
-//            }
     }
 };
 
@@ -421,7 +427,7 @@ picker.box = {
             if (arrlist[i] == rowdata[picker.grid.fieldvalue]) {
                 newkey.value = arrlist[i];
                 newkey.text = rowdata[picker.grid.fieldtext];
-                $("#" + picker.element.panel.content.id + " option[value='" + rowdata[picker.grid.fieldvalue] + "']").remove();
+                picker.element.panel.content.del(rowdata[picker.grid.fieldvalue]);
                 picker.keyvalue.del(newkey);
             }
         }
@@ -438,7 +444,7 @@ picker.box = {
         for (var j = 0; j < rows.length; j++) {
             for (var i = 0; i < arrlist.length; i++) {
                 if (arrlist[i] == rows[j][picker.grid.fieldvalue]) {
-                    $("#" + picker.element.panel.content.id + " option[value='" + rows[j][picker.grid.fieldvalue] + "']").remove();
+                    picker.element.panel.content.del(rows[j][picker.grid.fieldvalue]);
                     newkey.value = rows[j][picker.grid.fieldvalue];
                     newkey.text = rows[j][picker.grid.fieldtext];
                     picker.keyvalue.del(newkey);
@@ -520,7 +526,7 @@ picker.box.button = {
                 if (arrlist[i] == o.attr("value")) {
                     newkey.value = arrlist[i];
                     newkey.text = o.text();
-                    $("#" + picker.element.panel.content.id + ">option[value='" + o.attr("value") + "']").remove();
+                    picker.element.panel.content.del(o.attr("value"));
                     //清除对应checkbox
                     picker.grid.checkbox.unCheckbox(arrlist[i]);
                     if (boxobj.children().length > index) {
@@ -630,16 +636,9 @@ picker.grid = {
         $(p).pagination({
             pageNumber: 1,
             pageList: [10, 20, 30, 40, 50],    //可以设置每页记录条数的列表 
-            beforePageText: '第',  //页数文本框前显示的汉字 
+            beforePageText: '第',              //页数文本框前显示的汉字 
             afterPageText: '页  共 {pages} 页',
             displayMsg: '当前显示 {from} - {to} 条记录 共 {total} 条记录',
-//            onSelectPage: function (pageNumber, pageSize) {
-//                gridobj.datagrid('reload', {
-//                    'currentPage': pageNumber,
-//                    'pageSize': pageSize
-//                });
-//                
-//            }
             onChangePageSize: function() {
                 picker.grid.showSelectedRow();
             }

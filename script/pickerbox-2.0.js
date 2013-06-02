@@ -1,5 +1,5 @@
 ﻿/*
-    jQuery Pickerbox v2.0 - 2013-06-01
+    jQuery Pickerbox v2.0 - 2013-06-03
     (c) Kevin 21108589@qq.com
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -8,7 +8,7 @@
      id: '',                         //对象ID
      title: '',                      //标题
      height: '100%',                 //高度
-     width: '100%',                  //宽度
+     width: '',                  //宽度
      text: '',                       //已选文本
      value: '',                      //已选值
      ismultiple: true,               //是否多选

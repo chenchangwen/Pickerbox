@@ -114,7 +114,7 @@
             <p>script文件夹已包括所有相关js.</p>
         </div>
     </div>
-
+ 
     <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
             <h3>例子</h3>
@@ -222,8 +222,8 @@
                 </div>
                 <br />
                         <h1>pickerbox()方法会创建必需的html元素.如果一个对象带参数,否则会使用默认的参数,请查看<a href="javascript:void(0)" onclick="gopickerboxargument();">pickerbox对象参数</a>.</h1>
-            <h1>注意:数据均是本地json测试数据,如果浏览器因安全问题无法读取,请用url后台数据返回.</h1>
-               
+            <h1>注意:数据均是本地json测试数据,如果您使用的是chrome浏览器,它默认不允许iframe访问parent对象.无法读取数据导致出错.这样请用url后台返回数据.</h1>
+        
 
                <br/>
                 <h3>模板页面</h3>
@@ -494,7 +494,7 @@
                         <td>width（宽度）</td>
                         <td>number</td>
                         <td>pickerbox的宽度</td>
-                        <td>100%</td>
+                        <td>空</td>
                     </tr>
                     <tr>
                         <td>text（文本）</td>
@@ -760,8 +760,12 @@
                 <p>-灵活支持记录数据.</p>
                 <p>-支持重要事件回调.</p>
                 <br/>
-                <h4>兼容浏览器</h4>
+                <h4>支持浏览器</h4>
                 <p>成功测试在以下浏览器</p>
+                <p>Chrome</p>
+                <p>Firefox 3.5+</p>
+                <p>Safari 3.2.2+</p>
+                <p>Opera 10.6+</p>
                 <p>IE6,7,8</p>
                 <br/>
                 <h4>更新</h4>
