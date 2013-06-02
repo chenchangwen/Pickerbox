@@ -71,7 +71,11 @@
                     var p = opts;
                     var txt = p.text.split(",");
                     var val = p.value.split(",");
-                    var html = "<select id='" + box.element.content.id + "' multiple='multiple' style='width:100%;border:0;height:100%'>";
+                    var h = '100%';
+                    if (browser.isie7() || browser.isie6()) {
+                        h = 'auto';
+                    }
+                    var html = "<select id='" + box.element.content.id + "' multiple='multiple' style='border:0;height:"+h+";width:100%'>";
                     var count = 0;
                     if (p.value != "") {
                         for (var i = 0; i < val.length; i++) {
@@ -83,6 +87,12 @@
                     box.$self.html(html);
                     box.element.$count = $("#" + opts.id + '_count');
                     box.element.$content = $("#" + opts.id + '_content');
+
+                    if (browser.isie7() || browser.isie6()) {
+                        box.element.$content.css({ "width": box.element.$content.parent().css("width") });
+                        box.$self.css("height", box.element.$content.css("height"));
+                    }
+                    
                     box.element.$count.text(count);
                 }
             },
@@ -298,11 +308,13 @@
         }
         var target = $("#colorbox").length > 0 ? window : top;
         var h = '605px';
-        if ($.browser.msie && ($.browser.version == "6.0") && !$.support.style || $.browser.msie && ($.browser.version == "7.0")) {
+        var w = '1060px';
+        if (browser.isie6() || browser.isie7()) {
             h = '625px';
+            w = '1062px';
         }
-      
-        target.$.colorbox({ href: url, width: '1060px', height: h, iframe: true });
+ 
+        target.$.colorbox({ href: url, width: w, height: h, iframe: true });
         top.$("#"+element.out.value.id).val($.pickerbox.getValueById(p.id));
         top.$("#"+element.out.text.id).val($.pickerbox.getContentById(p.id+"_content"));
         top.$("#"+element.out.count.id).val($.pickerbox.getCountById(p.id));
@@ -360,6 +372,15 @@ $.pickerbox = {
             return top.$("#" + id).attr('id') == undefined ? $("#" + id) : top.$("#" + id);
         }
         return top.$("#" + id).attr('id') == undefined ? $("#" + id) : top.$("#" + id);
+    }
+};
+
+var browser = {
+    isie6: function () {
+        return $.browser.msie && ($.browser.version == "6.0");
+    },
+    isie7: function () {
+        return $.browser.msie && ($.browser.version == "7.0");
     }
 };
 

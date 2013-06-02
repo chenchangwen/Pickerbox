@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="script/jquery-1.5.2.min.js"></script>
+    <link href="css/SyntaxHighlighter.css" rel="stylesheet" />
+    <link href="css/easyui.css" rel="stylesheet" />
+    <link href="css/icon.css" rel="stylesheet" />
+    <link href="css/help.css" rel="stylesheet" />
+    <style type="text/css">
+ 
+    </style>
+    <title></title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#del").click(function() {
+              
+                $("#option1 > option:selected").each(function () {
+                    
+                    var o = $(this);
+                    var index = o.index();
+                      
+                    $("#option1>option[value='" + o.attr("value") + "']").remove();
+                    if ($("#option1").children().length > index) {
+                        $("#option1").get(0).selectedIndex = index;
+                    }
+                    else {
+                        $("#option1").get(0).selectedIndex = index - 1;
+                    }
+                   
+                     
+                }); 
+            });
+           
+            
+            $("#add").click(function () {
+                $("#option1").append("<option value='test'>test</option>");
+            });
+        });
+
+    </script>
+</head>
+    <body> 
+     
+            <div class="dp-highlighter">
+                <div class="panel" style="display: block; width: 400px;">
+                    <div class="panel-header" style="width: 388px;">
+                        <div class="panel-title">选择角色 地址:template1.html 已选:<span id="option_count" style="color: red">3</span>条记录</div>
+                        <div class="panel-tool"><a href="javascript:void(0)" class="icon-add"></a><a href="javascript:void(0)" class="icon-cut"></a></div>
+                    </div>
+                    <div id="option1" iframeid="" title="" class="panel-body" style="width: 398px; height: auto;">
+                        <select style="width: 100%; border: 0; height: auto" multiple="multiple" id="option_content">
+                            <option value="1001">行政部管理员</option>
+                            <option value="1002">财务部管理员</option>
+                            <option value="1003">开发部管理员</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        
+        <input id="del" value="shanchu" type="button"/>
+        <input id="add" value="tianjia" type="button"/>
+
+    </body>
+</html>

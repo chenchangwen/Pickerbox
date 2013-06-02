@@ -49,8 +49,8 @@ var picker = {
                 picker.element.panel.grid.height = '361';
                 picker.element.panel.tree.height = '321';
                 if (browser.isie6() || browser.isie7()) {
-                    picker.element.panel.grid.height = '380';
-                    picker.element.panel.tree.height = picker.element.panel.grid.height - 39;
+                    picker.element.panel.grid.height = '382';
+                    picker.element.panel.tree.height = picker.element.panel.grid.height - 40;
                 }
             }
         },
