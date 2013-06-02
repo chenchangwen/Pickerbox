@@ -136,6 +136,18 @@ var picker = {
                         }]
                     });
                     picker.element.panel.$count = $("#" + picker.element.panel.count.id);
+                },
+                add: function (value, text) {
+                    //IE6无法添加,IE7可以
+                    if (browser.isie6()) {
+                        var option = document.createElement('option');
+                        var s = document.getElementById('content');
+                        s.options.add(option);
+                        option.text = text;
+                        option.value = value;
+                    } else {
+                        picker.element.panel.$content.append("<option value='" + value + "'>" + text + "</option>");
+                    }
                 }
             },
             button: {
@@ -441,7 +453,7 @@ picker.box = {
         picker.element.panel.$content.html('');
         picker.element.$value.val(row.selectedvalue+',');
         picker.element.$text.val(row.selectedtext);
-        picker.element.panel.$content.append("<option value='" + row.selectedvalue + "'>" + row.selectedtext + "</option>");
+        picker.element.panel.content.add(row.selectedvalue, row.selectedtext);
         picker.element.panel.$count.text("1");
     },
     //移动项
@@ -463,7 +475,7 @@ picker.box = {
                     newkey.value = val;
                     newkey.text = txt;
                     picker.keyvalue.add(newkey);
-                    picker.element.panel.$content.append("<option value='" + val + "'>" + txt + "</option>");
+                    picker.element.panel.content.add(val,txt);
                     break;
                 }
                 else {
@@ -477,7 +489,7 @@ picker.box = {
                     if (sum == 0) {
                         picker.element.$value.val(picker.element.$value.val() + val +",");
                         picker.element.$text.val( picker.element.$text.val() + txt+ ",");
-                        picker.element.panel.$content.append("<option value='" + val + "'>" + txt + "</option>");
+                        picker.element.panel.content.add(val,txt);
                     }
                 }
             }
