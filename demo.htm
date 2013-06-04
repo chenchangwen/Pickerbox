@@ -95,7 +95,8 @@
     <div class="content" style="border-color: #ADADAD">
         <div style="padding: 10px">
             <div class="dp-highlighter">
-                <h5 style="font-size: 50px">pickerbox 2.0</h5>  
+                <h5 style="font-size: 50px">pickerbox 2.0</h5>
+                <a href="http://files.cnblogs.com/chenchangwen/Pickerbox2.0-2013-06-03.rar" target="_blank">下载</a>  
             </div>
         </div>
     </div>
@@ -407,7 +408,7 @@
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldtext:<span class="string">'RoleName'</span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fieldvalue:<span class="string">'RoleId'</span>,</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;},</span></li>
-                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;parentid:<span class="string">'iniframe'</span>,</span></li>
+                        <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;iframeid:<span class="string">'iniframe'</span>,</span></li>
                  
                         <li class="alt">&nbsp;&nbsp;&nbsp;&nbsp;onselected:<span class="keyword">function (p)</span><span>{</span></li>
                         <li class="alt"><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("[#iframepickerbox]已选值为:" + p.value + " 已选文本为:" + p.text+" 元素Id:" + p.id); {</span></li>
@@ -509,9 +510,9 @@
                         <td>空字符串</td>
                     </tr>
                     <tr>
-                        <td>parentid（父窗口id）</td>
+                        <td>iframeid（iframe的id）</td>
                         <td>string</td>
-                        <td>如果父窗口是iframe,必须设定</td>
+                        <td>如果是被iframe引用的,即父窗口是iframe,必须设定</td>
                         <td>空字符串</td>
                     </tr>
                     <tr>
