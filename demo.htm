@@ -15,81 +15,83 @@
     <script src="script/pickerbox-2.0.js" type="text/javascript"></script>
     <meta name="description" content="pickerbox简称采摘盒子,基于Jquery的插件,引用了JQueryzTree-v3.5.12,easyui1.3.2,及ColorBox v1.3.20.1.只为更方便的取得简单的,多条件的数据." />
     <meta name="keywords" content="pickerbox 采摘盒子,jquery采摘盒子,jquery插件   " />
-</head>
     <script type="text/javascript">
 
-        $(document).ready(function() {
-            $("#option").pickerbox(
-                {
-                    ismultiple: true,
-                    height: 200,
-                    width: 400,
-                    pickergird: {
-                        fieldtext: "RoleName",
-                        fieldvalue: "RoleId"
-                    },
-                    title: '选择角色 地址:template1.html',
-                    text: '行政部管理员,财务部管理员,开发部管理员',
-                    value: '1001,1002,1003',
-                    onselected: function(p) {
-                        alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text);
-                    },
-                    showtype: "select"
-                }
-            );
+    $(document).ready(function () {
+        $("#option").pickerbox(
+            {
+                ismultiple: true,
+                height: 200,
+                width: 400,
+                pickergird: {
+                    fieldtext: "RoleName",
+                    fieldvalue: "RoleId"
+                },
+                title: '选择角色 地址:template1.html',
+                text: '行政部管理员,财务部管理员,开发部管理员',
+                value: '1001,1002,1003',
+                onselected: function (p) {
+                    alert("[#option]已选值为:" + p.value + " 已选文本为:" + p.text);
+                },
+                showtype: "select"
+            }
+        );
 
 
-            $("#option2").pickerbox({
-                    ismultiple: false,
-                    pickergird: {
-                        fieldtext: "RoleName",
-                        fieldvalue: "RoleId"
-                    },
-                    width:200,
-                    showtype:"input"
-                }
-            );
-
-            $("#option3").pickerbox(
-                {
-                    ismultiple: true,
-                    height: 200,
-                    width: 400,
-                    pickergird: {
-                        fieldtext: "DeptName",
-                        fieldvalue: "DeptId"
-                    },
-                    url: 'template2.html',
-                    title: '选择部门 地址:template2.html',
-                    text: '行政部',
-                    value: '0001',
-                    onselected: function(p) {
-                        alert("[#option3]已选值为:" + p.value + " 已选文本为:" + p.text);
-                    }
-                }
-            ); 
-            $("#option4").pickerbox(
-                {
-                    ismultiple: false,
-                    title: '显示树',
-                    height: 100,
-                    width: 500,
-                    url: 'template3.html',
-                    pickergird: {
-                        fieldtext: "DeptName",
-                        fieldvalue: "DeptId"
-                    }
-                });
-        });
-    
-        function gopickerboxargument() {
-            var p = $("#pickerboxargument").position();
-            window.scrollTo(p.left, p.top);
+        $("#option2").pickerbox({
+            ismultiple: false,
+            pickergird: {
+                fieldtext: "RoleName",
+                fieldvalue: "RoleId"
+            },
+            width: 200,
+            showtype: "input"
         }
-        
+        );
 
-    
+        $("#option3").pickerbox(
+            {
+                ismultiple: true,
+                height: 200,
+                width: 400,
+                pickergird: {
+                    fieldtext: "DeptName",
+                    fieldvalue: "DeptId"
+                },
+                url: 'template2.html',
+                title: '选择部门 地址:template2.html',
+                text: '行政部',
+                value: '0001',
+                onselected: function (p) {
+                    alert("[#option3]已选值为:" + p.value + " 已选文本为:" + p.text);
+                }
+            }
+        );
+        $("#option4").pickerbox(
+            {
+                ismultiple: false,
+                title: '显示树',
+                height: 100,
+                width: 500,
+                url: 'template3.html',
+                pickergird: {
+                    fieldtext: "DeptName",
+                    fieldvalue: "DeptId"
+                }
+            });
+    });
+
+    function gopickerboxargument() {
+        var p = $("#pickerboxargument").position();
+        window.scrollTo(p.left, p.top);
+    }
+
+
+
     </script>
+
+</head>
+   
 <body>
     <br />
     <div class="content" style="border-color: #ADADAD">
@@ -737,7 +739,7 @@
                             <p>如:</p>
                             <p> var where = { 'DeptName': '行政部' };</p>
                             <p> var result = baidu.json.stringify(where);</p>
-                            <p> picker.datagrid.reload(result);</p>
+                            <p> picker.reload(result);</p>
                             <p>例如这里使用了baidu.json.stringify进行json格式化.</p>
                             <p>那么数据表格请求地址将是如:</p>
                             <p>http://localhost/pickerbox/handler.aspx?where=%7B%22DeptName%22%3A%22%E8%A1%8C%E6%94%BF%E9%83%A8%22%7D&page=1&rows=10</p>

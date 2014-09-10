@@ -135,6 +135,10 @@ var picker = {
                             handler: function() { picker.box.button.del(); }
                         }]
                     });
+                    //修正IE8模式下不完整
+                    $("#" + picker.element.panel.content.id).css('width', 'auto');
+                    $("#" + picker.element.panel.content.id).css('width', windowWidth + 'px');
+
                     picker.element.panel.$count = $("#" + picker.element.panel.count.id);
                 },
                 add: function (value, text) {
@@ -501,6 +505,10 @@ picker.box = {
             }
             picker.grid.unSelectRow();
         }
+        //修正IE8模式下不完整
+        $("#" + picker.element.panel.content.id).css('width', 'auto');
+        $("#" + picker.element.panel.content.id).css('width', windowWidth + 'px');
+
     }
 };
 
